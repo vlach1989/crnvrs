@@ -8,35 +8,43 @@ import {commonActions as common} from '@gisatcz/ptr-state';
 const add = common.add(ActionTypes.CRNVRS_DATA);
 
 const loadData = () => (dispatch) => {
+	const promises = [];
 	const days = enumerateDaysBetweenDates(moment('01-22-2020'), moment());
 
 	days.forEach(dayFull => {
+		const isoDate = moment(dayFull).toISOString();
 		const day = moment(dayFull).format("MM-DD-YYYY");
 		const url = "https://covid19.mathdro.id/api/daily/" + day;
-		utils.request(url, "GET", null, null).then((data) => {
-			if (data) {
-				const dataToSave = data.map((item) => {
-					let key = `${item.countryRegion}${item.provinceState ? "_" + item.provinceState : ""}`;
+		promises.push(
+			utils.request(url, "GET", null, null).then((data) => {
+				if (data) {
+					const dataToSave = data.map((item) => {
+						let key = `${item.countryRegion}${item.provinceState ? "_" + item.provinceState : ""}`;
 
-					// TODO More checks
-					if (key === "Czech Republic") {
-						key = "Czechia";
-					}
-
-					return {
-						key,
-						data: {
-							[day]: {...item, day, dayFull}
+						// TODO More checks
+						if (key === "Czech Republic") {
+							key = "Czechia";
+						} else if (key === "France_France") {
+							key = "France";
 						}
-					};
-				});
 
-				dispatch(add(dataToSave));
-			} else {
-				throw new Error("No data returned");
-			}
-		});
+						return {
+							key,
+							data: {
+								[day]: {...item, day, isoDate}
+							}
+						};
+					});
+
+					dispatch(add(dataToSave));
+				} else {
+					throw new Error("No data returned");
+				}
+			})
+		);
 	});
+
+	return Promise.all(promises);
 };
 
 // ============ helpers ===========

@@ -10,19 +10,26 @@ import './styles/index.scss';
 
 import * as serviceWorker from "./serviceWorker";
 import Action from "./state/Action";
+import ConfirmedCasesChart from "./components/ConfirmedCasesChart";
 
 const path = process.env.PUBLIC_URL;
 const history = createHistory({basename: path});
 const Store = createStore(history);
 
-Store.dispatch(Action.specific.crnvrsData.loadData());
-
-ReactDOM.render(
-	<>
-		<Provider store={Store}>
-			<>Ahoj</>
-		</Provider>
-	</>, document.getElementById('ptr')
-);
+Store.dispatch(Action.specific.crnvrsData.loadData()).then(() => {
+	ReactDOM.render(
+		<>
+			<Provider store={Store}>
+				<div className="ptr-light">
+					<h1>Confirmed cases</h1>
+					<ConfirmedCasesChart
+						threshold={50}
+						countries={["Czechia", "Germany", "Switzerland", "Italy", "Norway"]}
+					/>
+				</div>
+			</Provider>
+		</>, document.getElementById('ptr')
+	);
+});
 
 serviceWorker.unregister();
