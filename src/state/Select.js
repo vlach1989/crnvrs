@@ -1,10 +1,10 @@
 import {Select as CommonSelect} from '@gisatcz/ptr-state';
 
-import crnvrsData from "./Data/selectors";
+import confirmedCases from "./ConfirmedCases/selectors";
 
 export default {
 	...CommonSelect,
 	specific: {
-		crnvrsData
+		confirmedCases
 	}
 }

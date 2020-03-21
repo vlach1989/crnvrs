@@ -2,7 +2,7 @@ import {utils} from '@gisatcz/ptr-utils'
 import {commonActionTypesDefinitions} from '@gisatcz/ptr-state';
 
 export const crnvrs = {
-    CRNVRS_DATA: {
+    CONFIRMED_CASES: {
         ADD: null,
     }
 };

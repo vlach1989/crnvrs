@@ -7,7 +7,7 @@ import { wrapHistory } from "oaf-react-router";
 import {appReducers} from '@gisatcz/ptr-state';
 
 // specific
-import crnvrsDataReducers from './Data/reducers'
+import confirmedCases from './ConfirmedCases/reducers'
 
 export const createHistory = (options) => {
 	let history = createBrowserHistory(options);
@@ -28,7 +28,7 @@ export default history => {
 	}
 	return createStore(combineReducers({
 		specific: combineReducers({
-			crnvrs: crnvrsDataReducers
+			confirmedCases
 		}),
 		app: appReducers,
 		router: connectRouter(history)

@@ -17,10 +17,10 @@ class ConfirmedCasesChart extends React.PureComponent {
 
                         data={this.props.data}
                         keySourcePath="key"
-                        nameSourcePath="data.name"
-                        serieDataSourcePath="data.data"
-                        xSourcePath="isoDate"
-                        ySourcePath="confirmed"
+                        nameSourcePath="key"
+                        serieDataSourcePath="data.cases"
+                        xSourcePath="date"
+                        ySourcePath="value"
 
                         isSerie
                         pointRadius={3}
@@ -42,7 +42,7 @@ class ConfirmedCasesChart extends React.PureComponent {
                             max: 100000
                         }}
 
-                        sorting={[["isoDate", "asc"]]}
+                        sorting={[["date", "asc"]]}
 
                         legend
                         withPoints={false}

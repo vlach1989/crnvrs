@@ -30,6 +30,7 @@ function request (url, method, query, payload) {
 	}).then(
 		response => {
 			let contentType = response.headers.get('Content-type');
+			debugger;
 			if (response.ok) {
 				return response.json().then(body => {
 					if (body) {

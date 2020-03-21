@@ -1,10 +1,10 @@
 import {Action as CommonAction} from '@gisatcz/ptr-state';
 
-import crnvrsData from './Data/actions';
+import confirmedCases from './ConfirmedCases/actions';
 
 export default {
 	...CommonAction,
 	specific: {
-		crnvrsData
+		confirmedCases
 	}
 }

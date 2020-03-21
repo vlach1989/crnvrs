@@ -16,20 +16,20 @@ const path = process.env.PUBLIC_URL;
 const history = createHistory({basename: path});
 const Store = createStore(history);
 
-Store.dispatch(Action.specific.crnvrsData.loadData()).then(() => {
-	ReactDOM.render(
-		<>
-			<Provider store={Store}>
-				<div className="ptr-light">
-					<h1>Confirmed cases</h1>
-					<ConfirmedCasesChart
-						threshold={50}
-						countries={["Czechia", "Germany", "Switzerland", "Italy", "Norway"]}
-					/>
-				</div>
-			</Provider>
-		</>, document.getElementById('ptr')
-	);
-});
+Store.dispatch(Action.specific.confirmedCases.loadCsvData());
+
+ReactDOM.render(
+    <>
+        <Provider store={Store}>
+            <div className="ptr-light">
+                <h1>Confirmed cases</h1>
+                <ConfirmedCasesChart
+                    threshold={50}
+                    countries={["Czechia", "Germany", "Switzerland", "Italy", "Norway"]}
+                />
+            </div>
+        </Provider>
+    </>, document.getElementById('ptr')
+);
 
 serviceWorker.unregister();

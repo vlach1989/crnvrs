@@ -5,7 +5,7 @@ import presentation from './presentation';
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        data: Select.specific.crnvrsData.getFilteredDataByConfirmedCasesThreshold(state, ownProps.threshold, ownProps.countries)
+        data: Select.specific.confirmedCases.getFilteredDataByConfirmedCasesThreshold(state, ownProps.threshold, ownProps.countries)
     }
 };
 
