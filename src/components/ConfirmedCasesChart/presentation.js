@@ -19,18 +19,15 @@ class ConfirmedCasesChart extends React.PureComponent {
                         keySourcePath="key"
                         nameSourcePath="key"
                         serieDataSourcePath="data.cases"
-                        xSourcePath="date"
+                        xSourcePath="day"
                         ySourcePath="value"
 
                         isSerie
                         pointRadius={3}
 
-                        xScaleType="time"
                         xValuesSize={5}
                         xOptions={{
-                            name: "Time",
-                            axisValueFormat: "DD MM YYYY",
-                            popupValueFormat: "DD MM YYYY"
+                            name: "Time"
                         }}
 
                         yScaleType="logarithmic"
@@ -42,10 +39,13 @@ class ConfirmedCasesChart extends React.PureComponent {
                             max: 100000
                         }}
 
-                        sorting={[["date", "asc"]]}
+                        sorting={[["day", "asc"]]}
+
+                        width={70}
+                        height={40}
 
                         legend
-                        withPoints={false}
+                        withPoints={true}
                     />
                 </HoverHandler>
             );

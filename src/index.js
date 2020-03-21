@@ -24,8 +24,8 @@ ReactDOM.render(
             <div className="ptr-light">
                 <h1>Confirmed cases</h1>
                 <ConfirmedCasesChart
-                    threshold={50}
-                    countries={["Czechia", "Germany", "Switzerland", "Italy", "Norway"]}
+                    threshold={20}
+                    countries={["Czechia", "Germany", "US_California", "Italy", "Norway", "Japan", "United Kingdom_United Kingdom", "US_New York"]}
                 />
             </div>
         </Provider>

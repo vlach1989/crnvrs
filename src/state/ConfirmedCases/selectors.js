@@ -14,11 +14,36 @@ const getFilteredDataByConfirmedCasesThreshold = createSelector(
     ],
     (data, threshold, countries) => {
         if (data.length) {
-            const filteredCountries = _.filter(data, item => {
+            let filteredCountries = _.filter(data, item => {
                 return _.includes(countries, item.key);
             });
 
-            return filteredCountries;
+            let appliedThreshold = null;
+            if (filteredCountries) {
+                appliedThreshold = filteredCountries.map(country => {
+                    let filteredCases = [];
+
+                    let index = 1;
+                    _.forEach(country.data.cases, (item) => {
+                        if (item.value >= threshold) {
+                            filteredCases.push({
+                                ...item, day: index
+                            });
+                            index++;
+                        }
+                    });
+
+                    return {
+                        ...country,
+                        data: {
+                            ...country.data,
+                            cases: filteredCases
+                        }
+                    }
+                });
+            }
+
+            return appliedThreshold;
         } else {
             return null;
         }
