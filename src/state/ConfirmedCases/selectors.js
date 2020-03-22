@@ -51,5 +51,6 @@ const getFilteredDataByConfirmedCasesThreshold = createSelector(
 );
 
 export default {
+    getAll,
     getFilteredDataByConfirmedCasesThreshold
 };

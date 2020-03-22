@@ -17,7 +17,7 @@ class ConfirmedCasesChart extends React.PureComponent {
 
                         data={this.props.data}
                         keySourcePath="key"
-                        nameSourcePath="key"
+                        nameSourcePath="data.name"
                         serieDataSourcePath="data.cases"
                         xSourcePath="day"
                         ySourcePath="value"

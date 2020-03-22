@@ -14,6 +14,9 @@ const thresholdOptions = [{
 },{
     key: "500",
     label: 500
+},{
+    key: "1000",
+    label: 1000
 }];
 
 class Confirmed extends React.PureComponent {
@@ -22,10 +25,18 @@ class Confirmed extends React.PureComponent {
         super(props);
 
         this.state = {
-          threshold: thresholdOptions[1]
+          selectedAreas: ["Czechia", "Italy", "Norway", "US_New York", "Spain", "Korea, South"],
+          threshold: thresholdOptions[2]
         };
 
+        this.onAreaChange = this.onAreaChange.bind(this);
         this.onThresholdChange = this.onThresholdChange.bind(this);
+    }
+
+    onAreaChange(options) {
+        this.setState({
+           selectedAreas: options.map(option => option.key)
+        });
     }
 
     onThresholdChange(threshold) {
@@ -45,9 +56,17 @@ class Confirmed extends React.PureComponent {
                     options={thresholdOptions}
                     onChange={this.onThresholdChange}
                 />
+                <Select
+                    value={this.state.selectedAreas}
+                    optionLabel="data.name"
+                    optionValue="key"
+                    options={this.props.allAreas}
+                    multi
+                    onChange={this.onAreaChange}
+                />
                 <ConfirmedCasesChart
                     threshold={this.state.threshold.label}
-                    countries={["Czechia", "Germany", "US_California", "Italy", "Norway", "Japan", "United Kingdom_United Kingdom", "US_New York"]}
+                    countries={this.state.selectedAreas}
                 />
             </>
         );

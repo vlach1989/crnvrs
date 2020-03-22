@@ -45,6 +45,7 @@ const loadCsvData = () => (dispatch) => {
 					return {
 						key,
 						data: {
+							name: province ? `${province} (${country})` : country,
 							country,
 							province,
 							cases: timeSerie

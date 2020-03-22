@@ -10,7 +10,7 @@ import './styles/index.scss';
 
 import * as serviceWorker from "./serviceWorker";
 import Action from "./state/Action";
-import Confirmed from "./components/Confirmed/presentation";
+import Confirmed from "./components/Confirmed";
 
 const path = process.env.PUBLIC_URL;
 const history = createHistory({basename: path});
