@@ -10,7 +10,7 @@ import './styles/index.scss';
 
 import * as serviceWorker from "./serviceWorker";
 import Action from "./state/Action";
-import ConfirmedCasesChart from "./components/ConfirmedCasesChart";
+import Confirmed from "./components/Confirmed/presentation";
 
 const path = process.env.PUBLIC_URL;
 const history = createHistory({basename: path});
@@ -22,11 +22,7 @@ ReactDOM.render(
     <>
         <Provider store={Store}>
             <div className="ptr-light">
-                <h1>Confirmed cases</h1>
-                <ConfirmedCasesChart
-                    threshold={20}
-                    countries={["Czechia", "Germany", "US_California", "Italy", "Norway", "Japan", "United Kingdom_United Kingdom", "US_New York"]}
-                />
+                <Confirmed/>
             </div>
         </Provider>
     </>, document.getElementById('ptr')

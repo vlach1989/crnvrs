@@ -25,7 +25,7 @@ class ConfirmedCasesChart extends React.PureComponent {
                         isSerie
                         pointRadius={3}
 
-                        xValuesSize={5}
+                        xValuesSize={2}
                         xOptions={{
                             name: "Time"
                         }}
@@ -41,8 +41,8 @@ class ConfirmedCasesChart extends React.PureComponent {
 
                         sorting={[["day", "asc"]]}
 
-                        width={70}
-                        height={40}
+                        width={60}
+                        height={30}
 
                         legend
                         withPoints={true}
