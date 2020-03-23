@@ -11,6 +11,7 @@ import './styles/index.scss';
 import * as serviceWorker from "./serviceWorker";
 import Action from "./state/Action";
 import Confirmed from "./components/Confirmed";
+import Card from "./components/Card";
 
 const path = process.env.PUBLIC_URL;
 const history = createHistory({basename: path});
@@ -22,7 +23,9 @@ ReactDOM.render(
     <>
         <Provider store={Store}>
             <div className="ptr-light">
-                <Confirmed/>
+                <Card title="Confirmed cases" subtitle="from day with at least 100 cases">
+                    <Confirmed/>
+                </Card>
             </div>
         </Provider>
     </>, document.getElementById('ptr')

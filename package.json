@@ -1,13 +1,13 @@
 {
   "name": "crnvrs",
   "path": "/",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": false,
   "homepage": "https://vlach1989.github.io/crnvrs/",
   "dependencies": {
-    "@gisatcz/ptr-charts": "1.2.0",
+    "@gisatcz/ptr-charts": "1.2.1",
     "@gisatcz/ptr-atoms": "1.2.0",
-    "@gisatcz/ptr-core": "1.2.0",
+    "@gisatcz/ptr-core": "1.2.2",
     "@gisatcz/ptr-state": "1.2.2",
     "classnames": "2.2.6",
     "csv-loader": "3.0.2",

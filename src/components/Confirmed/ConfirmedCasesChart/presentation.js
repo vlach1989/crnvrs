@@ -25,27 +25,32 @@ class ConfirmedCasesChart extends React.PureComponent {
                         isSerie
                         pointRadius={3}
 
-                        xValuesSize={2}
+                        xValuesSize={1.8}
                         xOptions={{
-                            name: "Time"
+                            name: "Day"
                         }}
 
                         yScaleType="logarithmic"
-                        yValuesSize={5}
+                        yValuesSize={3.8}
                         yTitle
                         yOptions={{
                             name: "Confirmed cases",
-                            min: 1,
-                            max: 100000
+                            min: 100,
+                            max: 100000,
+                            unit: "cases"
                         }}
 
                         sorting={[["day", "asc"]]}
 
-                        width={60}
                         height={30}
+                        minWidth={10}
 
                         legend
                         withPoints={true}
+                        pointOptions={{
+                            radius: 4,
+                            showOnHover: true
+                        }}
                     />
                 </HoverHandler>
             );

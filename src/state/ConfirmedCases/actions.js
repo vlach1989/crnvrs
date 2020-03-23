@@ -30,9 +30,11 @@ const loadCsvData = () => (dispatch) => {
 					}
 
 					let timeSerie = [];
+					let currentCases = 0;
 					_.forIn(area, (val, dateString) => {
 						const date = moment(dateString).toISOString();
 						const value = Number(val);
+						currentCases = value;
 
 						if (value) {
 							timeSerie.push({
@@ -48,6 +50,7 @@ const loadCsvData = () => (dispatch) => {
 							name: province ? `${province} (${country})` : country,
 							country,
 							province,
+							currentCases,
 							cases: timeSerie
 						}
 					}

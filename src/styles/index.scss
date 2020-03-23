@@ -58,3 +58,22 @@
 	--accent100: #{$darkAccent100};
 	--accent100rgb: #{$darkAccent100rgb};
 }
+
+.ptr-light,
+.ptr-dark {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	background: var(--base10);
+	position: relative;
+	top: 0;
+}
+
+.ptr-chart {
+	margin-top: m(2/3);
+}
+
+.crnvrs-card-content .ptr-select__multi-value {
+	background-color: var(--base05);
+}

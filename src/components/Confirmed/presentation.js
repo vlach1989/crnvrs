@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 import {Select} from '@gisatcz/ptr-atoms';
 import ConfirmedCasesChart from "./ConfirmedCasesChart";
 
@@ -33,9 +34,12 @@ class Confirmed extends React.PureComponent {
         this.onThresholdChange = this.onThresholdChange.bind(this);
     }
 
-    onAreaChange(options) {
+    onAreaChange(selectedOptions) {
+        const keys = selectedOptions.map(option => option.key);
+        const sorted = _.sortBy(keys);
+
         this.setState({
-           selectedAreas: options.map(option => option.key)
+           selectedAreas: sorted
         });
     }
 
@@ -48,14 +52,13 @@ class Confirmed extends React.PureComponent {
     render() {
         return (
             <>
-                <h1>Confirmed cases</h1>
-                <Select
-                    value={this.state.threshold}
-                    optionLabel="label"
-                    optionValue="key"
-                    options={thresholdOptions}
-                    onChange={this.onThresholdChange}
-                />
+                {/*<Select*/}
+                {/*    value={this.state.threshold}*/}
+                {/*    optionLabel="label"*/}
+                {/*    optionValue="key"*/}
+                {/*    options={thresholdOptions}*/}
+                {/*    onChange={this.onThresholdChange}*/}
+                {/*/>*/}
                 <Select
                     value={this.state.selectedAreas}
                     optionLabel="data.name"
@@ -63,6 +66,7 @@ class Confirmed extends React.PureComponent {
                     options={this.props.allAreas}
                     multi
                     onChange={this.onAreaChange}
+                    clearable={false}
                 />
                 <ConfirmedCasesChart
                     threshold={this.state.threshold.label}

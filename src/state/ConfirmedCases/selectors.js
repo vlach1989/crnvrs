@@ -6,6 +6,15 @@ const getSubstate = state => state.specific.confirmedCases;
 
 const getAll = commonSelectors.getAll(getSubstate);
 
+const getAllSortedByCases = createSelector(
+    [
+        getAll
+    ],
+    (allCases) => {
+        return _.orderBy(allCases, ['data.currentCases'], ['desc']);
+    }
+);
+
 const getFilteredDataByConfirmedCasesThreshold = createSelector(
     [
         getAll,
@@ -52,5 +61,6 @@ const getFilteredDataByConfirmedCasesThreshold = createSelector(
 
 export default {
     getAll,
+    getAllSortedByCases,
     getFilteredDataByConfirmedCasesThreshold
 };
