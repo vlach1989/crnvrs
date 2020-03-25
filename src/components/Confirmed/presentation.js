@@ -2,6 +2,7 @@ import React from 'react';
 import _ from 'lodash';
 import {Select} from '@gisatcz/ptr-atoms';
 import ConfirmedCasesChart from "./ConfirmedCasesChart";
+import Card from "../Card";
 
 const thresholdOptions = [{
     key: "1",
@@ -51,14 +52,11 @@ class Confirmed extends React.PureComponent {
 
     render() {
         return (
-            <>
-                {/*<Select*/}
-                {/*    value={this.state.threshold}*/}
-                {/*    optionLabel="label"*/}
-                {/*    optionValue="key"*/}
-                {/*    options={thresholdOptions}*/}
-                {/*    onChange={this.onThresholdChange}*/}
-                {/*/>*/}
+            <Card
+                title="Confirmed cases progress"
+                subtitle="from the day with at least 100 cases"
+                col={2}
+            >
                 <Select
                     value={this.state.selectedAreas}
                     optionLabel="data.name"
@@ -72,7 +70,7 @@ class Confirmed extends React.PureComponent {
                     threshold={this.state.threshold.label}
                     countries={this.state.selectedAreas}
                 />
-            </>
+            </Card>
         );
     }
 }

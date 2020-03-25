@@ -63,17 +63,6 @@
 .ptr-dark {
 	min-height: 100%;
 	width: 100%;
-	display: flex;
-	justify-content: center;
-	background: var(--base10);
-	position: relative;
+	background: var(--base15);
 	top: 0;
-}
-
-.ptr-chart {
-	margin-top: m(2/3);
-}
-
-.crnvrs-card-content .ptr-select__multi-value {
-	background-color: var(--base05);
 }

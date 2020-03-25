@@ -32,7 +32,6 @@ class ConfirmedCasesChart extends React.PureComponent {
 
                         yScaleType="logarithmic"
                         yValuesSize={3.8}
-                        yTitle
                         yOptions={{
                             name: "Confirmed cases",
                             min: 100,
@@ -42,8 +41,7 @@ class ConfirmedCasesChart extends React.PureComponent {
 
                         sorting={[["day", "asc"]]}
 
-                        height={30}
-                        minWidth={10}
+                        height={18}
 
                         legend
                         withPoints={true}
