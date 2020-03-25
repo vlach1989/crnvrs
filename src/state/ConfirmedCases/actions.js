@@ -30,10 +30,12 @@ const loadCsvData = () => (dispatch) => {
 					}
 
 					let timeSerie = [];
+					let previousDayCases = 0;
 					let currentCases = 0;
 					_.forIn(area, (val, dateString) => {
 						const date = moment(dateString).toISOString();
 						const value = Number(val);
+						previousDayCases = currentCases;
 						currentCases = value;
 
 						if (value) {
@@ -51,6 +53,7 @@ const loadCsvData = () => (dispatch) => {
 							country,
 							province,
 							currentCases,
+							changedDaily: (currentCases - previousDayCases),
 							cases: timeSerie
 						}
 					}

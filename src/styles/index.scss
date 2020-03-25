@@ -66,3 +66,31 @@
 	background: var(--base15);
 	top: 0;
 }
+
+.crnvrs-table {
+	width: 100%;
+}
+
+.crnvrs-table tr {
+	border-bottom: 1px solid var(--base15);
+	width: 100%;
+}
+
+.crnvrs-table th {
+	height: 2rem;
+	text-align: left;
+	font-size: $b1;
+	color: var(--base50);
+	vertical-align: middle;
+}
+
+.crnvrs-table td {
+	height: 2rem;
+	color: var(--base85);
+	vertical-align: middle;
+	font-size: $b1;
+}
+
+.crnvrs-table .crnvrs-table-column-right {
+	text-align: right;
+}

@@ -11,6 +11,8 @@ import './styles/index.scss';
 import * as serviceWorker from "./serviceWorker";
 import Action from "./state/Action";
 import Confirmed from "./components/Confirmed";
+import ConfirmedTotal from "./components/ConfirmedTotal";
+import ConfirmedChange from "./components/ConfirmedChange";
 
 const path = process.env.PUBLIC_URL;
 const history = createHistory({basename: path});
@@ -24,7 +26,10 @@ ReactDOM.render(
             <div className="ptr-light">
                 <div className="crnvrs-card-row">
                     <Confirmed/>
-                    <Confirmed/>
+                    <div className="crnvrs-card-group">
+                        <ConfirmedTotal/>
+                        <ConfirmedChange/>
+                    </div>
                 </div>
             </div>
         </Provider>

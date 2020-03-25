@@ -16,7 +16,7 @@ class Card extends React.PureComponent {
                         {this.props.title}
                         <span>{this.props.subtitle ? (`(${this.props.subtitle})`) : null}</span>
                     </div>
-                    <div className="crnvrs-card-tools"></div>
+                    {this.props.switch}
                 </div>
                 <div className="crnvrs-card-content">
                     {this.props.children}
@@ -27,3 +27,30 @@ class Card extends React.PureComponent {
 }
 
 export default Card;
+
+export class Switch extends React.PureComponent {
+    onOptionClick(props) {
+        if (!props.active) {
+            this.props.onChange(props.optionKey);
+        }
+    }
+
+    render() {
+        return (
+            <div className="crnvrs-card-switch">
+                {React.Children.map(this.props.children, child => React.cloneElement(child, {onClick: this.onOptionClick.bind(this, child.props)}))}
+            </div>
+        );
+    }
+}
+
+export const SwitchOption = (props) => {
+    const classes = classnames("crnvrs-card-switch-option", {
+       "active": props.active,
+       "disabled": props.disabled
+    });
+
+    return (
+        <div className={classes} onClick={props.onClick}>{props.children}</div>
+    );
+};

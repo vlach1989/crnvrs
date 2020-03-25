@@ -15,6 +15,15 @@ const getAllSortedByCases = createSelector(
     }
 );
 
+const getAllSortedByChange = createSelector(
+    [
+        getAll
+    ],
+    (allCases) => {
+        return _.orderBy(allCases, ['data.changedDaily'], ['desc']);
+    }
+);
+
 const getFilteredDataByConfirmedCasesThreshold = createSelector(
     [
         getAll,
@@ -62,5 +71,6 @@ const getFilteredDataByConfirmedCasesThreshold = createSelector(
 export default {
     getAll,
     getAllSortedByCases,
+    getAllSortedByChange,
     getFilteredDataByConfirmedCasesThreshold
 };
