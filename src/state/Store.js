@@ -1,4 +1,13 @@
-import { createStore, combineReducers, applyMiddleware, compose, thunk, logger, reduxBatch } from '@gisatcz/ptr-state';
+import {
+	createStore,
+	combineReducers,
+	applyMiddleware,
+	compose,
+	thunk,
+	logger,
+	reduxBatch,
+	componentsReducers
+} from '@gisatcz/ptr-state';
 import { connectRouter, routerMiddleware } from '@gisatcz/ptr-state';
 import { createBrowserHistory } from 'history';
 import { wrapHistory } from "oaf-react-router";
@@ -31,6 +40,7 @@ export default history => {
 			confirmedCases
 		}),
 		app: appReducers,
+		components: componentsReducers,
 		router: connectRouter(history)
 	}), compose(reduxBatch, middleware, reduxBatch, applyMiddleware(thunk), reduxBatch));
 }

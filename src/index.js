@@ -20,6 +20,12 @@ const Store = createStore(history);
 
 Store.dispatch(Action.specific.confirmedCases.loadCsvData());
 
+Store.dispatch(Action.components.update("ConfirmedChangeTable", {
+    contentOptions: ["Daily", "Weekly"],
+    activeContentOption: "Daily",
+    order: [["data.Daily.abs", "desc"]]
+}));
+
 ReactDOM.render(
     <>
         <Provider store={Store}>
@@ -28,7 +34,9 @@ ReactDOM.render(
                     <Confirmed/>
                     <div className="crnvrs-card-group">
                         <ConfirmedTotal/>
-                        <ConfirmedChange/>
+                        <ConfirmedChange
+                            componentKey="ConfirmedChangeTable"
+                        />
                     </div>
                 </div>
             </div>

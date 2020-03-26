@@ -76,12 +76,22 @@
 	width: 100%;
 }
 
+.crnvrs-table tr:not(:first-child):hover {
+	background: var(--base10);
+}
+
 .crnvrs-table th {
 	height: 2rem;
 	text-align: left;
 	font-size: $b1;
 	color: var(--base50);
 	vertical-align: middle;
+	cursor: pointer;
+}
+
+.crnvrs-table th.active {
+	font-weight: bold;
+	color: var(--base85);
 }
 
 .crnvrs-table td {
@@ -89,6 +99,11 @@
 	color: var(--base85);
 	vertical-align: middle;
 	font-size: $b1;
+	min-width: 4rem;
+}
+
+.crnvrs-table td.red {
+	color: #cc0000
 }
 
 .crnvrs-table .crnvrs-table-column-right {

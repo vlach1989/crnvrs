@@ -1,17 +1,28 @@
 import {createSelector} from 'reselect';
-import {commonSelectors} from '@gisatcz/ptr-state';
+import {commonSelectors, componentsSelectors} from '@gisatcz/ptr-state';
 import _ from "lodash";
 
 const getSubstate = state => state.specific.confirmedCases;
 
 const getAll = commonSelectors.getAll(getSubstate);
 
+const getAllSortedByComponent = createSelector(
+    [
+        getAll,
+        (state,componentKey) => componentsSelectors.getDataByComponentKey(state, componentKey)
+    ],
+    (allCases, componentState) => {
+        const order = componentState.order[0];
+        return _.orderBy(allCases, [order[0]], [order[1]]);
+    }
+);
+
 const getAllSortedByCases = createSelector(
     [
         getAll
     ],
     (allCases) => {
-        return _.orderBy(allCases, ['data.currentCases'], ['desc']);
+        return _.orderBy(allCases, ['data.current'], ['desc']);
     }
 );
 
@@ -20,7 +31,7 @@ const getAllSortedByChange = createSelector(
         getAll
     ],
     (allCases) => {
-        return _.orderBy(allCases, ['data.changedDaily'], ['desc']);
+        return _.orderBy(allCases, ['data.dailyChangeAbsolute'], ['desc']);
     }
 );
 
@@ -72,5 +83,6 @@ export default {
     getAll,
     getAllSortedByCases,
     getAllSortedByChange,
+    getAllSortedByComponent,
     getFilteredDataByConfirmedCasesThreshold
 };

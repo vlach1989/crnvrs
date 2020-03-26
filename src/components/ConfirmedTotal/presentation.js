@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
-import Card, {Switch, SwitchOption} from "../Card";
+import Card, {Switch} from "../Card";
 
 class ConfirmedChange extends React.PureComponent {
 
@@ -17,14 +17,6 @@ class ConfirmedChange extends React.PureComponent {
         return (
             <Card
                 title="Cases"
-                switch={
-                    <Switch
-                        onChange={this.onContentChange}
-                    >
-                        <SwitchOption optionKey="total" active>Total</SwitchOption>
-                        <SwitchOption optionKey="perCapita" disabled>Per capita</SwitchOption>
-                    </Switch>
-                }
             >
                 <table className="crnvrs-table">
                     <tr>
@@ -34,7 +26,7 @@ class ConfirmedChange extends React.PureComponent {
                     {this.props.allAreas.map((area, i) =>
                         <tr>
                             <td>{i+1}. {area.data.name}</td>
-                            <td className="crnvrs-table-column-right">{area.data.currentCases.toLocaleString()}</td>
+                            <td className="crnvrs-table-column-right">{area.data.current && area.data.current.toLocaleString()}</td>
                         </tr>
                     )}
                 </table>

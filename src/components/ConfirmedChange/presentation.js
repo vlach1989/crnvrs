@@ -1,6 +1,7 @@
 import React from 'react';
+import classnames from 'classnames';
 import _ from 'lodash';
-import Card, {Switch, SwitchOption} from "../Card";
+import Card, {Switch} from "../Card";
 
 class ConfirmedTotal extends React.PureComponent {
 
@@ -9,33 +10,66 @@ class ConfirmedTotal extends React.PureComponent {
         this.onContentChange = this.onContentChange.bind(this);
     }
 
-    onContentChange() {
-        // TODO
+    onContentChange(activeContentOption) {
+        this.props.setActiveContentOption(activeContentOption);
+        this.onOrderChange(activeContentOption);
+    }
+
+    onOrderChange(content, column, order) {
+        const values = this.props.order[0][0].split(".");
+        const ordering = this.props.order[0][1];
+        const contentString = content || values[1];
+        const columnString = column || values[2];
+        const orderString = ordering || order;
+
+        this.props.setOrder([[`data.${contentString}.${columnString}`, orderString]]);
     }
 
     render() {
+        const values = this.props.order[0][0].split(".");
+        const activeColumn = values[2];
+
+        const absClass = classnames("crnvrs-table-column-right", {
+            active: activeColumn === "abs"
+        });
+
+        const relClass = classnames("crnvrs-table-column-right", {
+            active: activeColumn === "rel"
+        });
+
         return (
             <Card
                 title="Change"
                 switch={
                     <Switch
                         onChange={this.onContentChange}
-                    >
-                        <SwitchOption optionKey="Daily" active>Daily</SwitchOption>
-                        <SwitchOption optionKey="Weekly" disabled>Weekly</SwitchOption>
-                    </Switch>
+                        options={this.props.contentOptions}
+                        active={this.props.activeContentOption}
+                    />
                 }
             >
                 <table className="crnvrs-table">
                     <tr>
                         <th>Country/province</th>
-                        <th className="crnvrs-table-column-right">Change</th>
+                        <th onClick={this.onOrderChange.bind(this, null, 'abs', null)} className={absClass}>Abs</th>
+                        <th onClick={this.onOrderChange.bind(this, null, 'rel', null)} className={relClass}>%</th>
                     </tr>
-                    {this.props.allSortedByChange.map((area, i) =>
-                        <tr>
-                            <td>{i+1}. {area.data.name}</td>
-                            <td className="crnvrs-table-column-right">{area.data.changedDaily.toLocaleString()}</td>
-                        </tr>
+                    {this.props.allSortedByComponent.map((area, i) => {
+                        let absChangeValue = area.data[this.props.activeContentOption].abs;
+                        let relChangeValue = area.data[this.props.activeContentOption].rel;
+
+                        const relClasses = classnames("crnvrs-table-column-right", {
+                            red: relChangeValue > 0
+                        });
+
+                        return (
+                            <tr>
+                                <td>{i+1}. {area.data.name}</td>
+                                <td className="crnvrs-table-column-right">{absChangeValue && absChangeValue.toLocaleString()}</td>
+                                <td className={relClasses}>{relChangeValue && relChangeValue.toLocaleString(undefined, {minimumFractionDigits: 1, maximumFractionDigits: 1})}</td>
+                            </tr>
+                        );
+                    }
                     )}
                 </table>
             </Card>

@@ -16,7 +16,9 @@ const loadCsvData = () => (dispatch) => {
 		header: true,
 		complete: function(result) {
 			if (result && result.data) {
-				const finalData = result.data.map(area => {
+				let finalData = [];
+
+				result.data.forEach(area => {
 					const country = area["Country/Region"];
 					const province = area["Province/State"];
 					delete area["Country/Region"];
@@ -30,13 +32,9 @@ const loadCsvData = () => (dispatch) => {
 					}
 
 					let timeSerie = [];
-					let previousDayCases = 0;
-					let currentCases = 0;
 					_.forIn(area, (val, dateString) => {
 						const date = moment(dateString).toISOString();
 						const value = Number(val);
-						previousDayCases = currentCases;
-						currentCases = value;
 
 						if (value) {
 							timeSerie.push({
@@ -46,16 +44,49 @@ const loadCsvData = () => (dispatch) => {
 						}
 					});
 
-					return {
+					const lastIndex = timeSerie.length - 1;
+					const current = timeSerie[lastIndex] && timeSerie[lastIndex].value;
+					const previousDay = timeSerie[lastIndex - 1] && timeSerie[lastIndex - 1].value;
+					const threeDaysBefore = timeSerie[lastIndex - 3] && timeSerie[lastIndex - 3].value;
+					const weekBefore = timeSerie[lastIndex - 7] && timeSerie[lastIndex - 7].value;
+
+					const dailyChangeAbsolute = current - previousDay;
+					const dailyChangeRelative = (current - previousDay) * 100/previousDay;
+
+					const threeDaysChangeAbsolute = current - threeDaysBefore;
+					const threeDaysChangeRelative = (current - threeDaysBefore) * 100/threeDaysBefore;
+
+					const weeklyChangeAbsolute = current - weekBefore;
+					const weeklyChangeRelative = (current - weekBefore) * 100/weekBefore;
+
+					const record = {
 						key,
 						data: {
 							name: province ? `${province} (${country})` : country,
 							country,
 							province,
-							currentCases,
-							changedDaily: (currentCases - previousDayCases),
+							current,
+							previousDay,
+							threeDaysBefore,
+							weekBefore,
+							Daily: {
+								abs: dailyChangeAbsolute,
+								rel: dailyChangeRelative
+							},
+							ThreeDays: {
+								abs: threeDaysChangeAbsolute,
+								rel: threeDaysChangeRelative
+							},
+							Weekly: {
+								abs: weeklyChangeAbsolute,
+								rel: weeklyChangeRelative
+							},
 							cases: timeSerie
 						}
+					};
+
+					if (current > 99) {
+						finalData.push(record);
 					}
 				});
 
