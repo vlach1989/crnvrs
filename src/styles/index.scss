@@ -86,6 +86,9 @@
 	font-size: $b1;
 	color: var(--base50);
 	vertical-align: middle;
+}
+
+.crnvrs-table th.sortable {
 	cursor: pointer;
 }
 

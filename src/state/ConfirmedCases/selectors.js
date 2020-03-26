@@ -12,8 +12,8 @@ const getAllSortedByComponent = createSelector(
         (state,componentKey) => componentsSelectors.getDataByComponentKey(state, componentKey)
     ],
     (allCases, componentState) => {
-        const order = componentState.order[0];
-        return _.orderBy(allCases, [order[0]], [order[1]]);
+        const sorting = componentState.sorting;
+        return _.orderBy(allCases, [sorting[0]], [sorting[1]]);
     }
 );
 

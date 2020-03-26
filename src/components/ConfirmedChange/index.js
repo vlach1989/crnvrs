@@ -8,7 +8,7 @@ const mapStateToProps = (state, ownProps) => {
         allSortedByComponent: Select.specific.confirmedCases.getAllSortedByComponent(state, ownProps.componentKey),
         contentOptions: Select.components.get(state, ownProps.componentKey, "contentOptions"),
         activeContentOption: Select.components.get(state, ownProps.componentKey, "activeContentOption"),
-        order: Select.components.get(state, ownProps.componentKey, "order")
+        sorting: Select.components.get(state, ownProps.componentKey, "sorting")
     }
 };
 
@@ -17,8 +17,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         setActiveContentOption: (activeContentOption) => {
             dispatch(Action.components.set(ownProps.componentKey, "activeContentOption", activeContentOption))
         },
-        setOrder: (order) => {
-            dispatch(Action.components.set(ownProps.componentKey, "order", order));
+        setSorting: (sorting) => {
+            dispatch(Action.components.set(ownProps.componentKey, "sorting", sorting));
         }
     }
 };

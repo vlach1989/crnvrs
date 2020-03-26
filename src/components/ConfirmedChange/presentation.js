@@ -16,24 +16,24 @@ class ConfirmedTotal extends React.PureComponent {
     }
 
     onOrderChange(content, column, order) {
-        const values = this.props.order[0][0].split(".");
-        const ordering = this.props.order[0][1];
+        const values = this.props.sorting[0].split(".");
+        const ordering = this.props.sorting[1];
         const contentString = content || values[1];
         const columnString = column || values[2];
         const orderString = ordering || order;
 
-        this.props.setOrder([[`data.${contentString}.${columnString}`, orderString]]);
+        this.props.setSorting([`data.${contentString}.${columnString}`, orderString]);
     }
 
     render() {
-        const values = this.props.order[0][0].split(".");
+        const values = this.props.sorting[0].split(".");
         const activeColumn = values[2];
 
-        const absClass = classnames("crnvrs-table-column-right", {
+        const absClass = classnames("crnvrs-table-column-right sortable", {
             active: activeColumn === "abs"
         });
 
-        const relClass = classnames("crnvrs-table-column-right", {
+        const relClass = classnames("crnvrs-table-column-right sortable", {
             active: activeColumn === "rel"
         });
 

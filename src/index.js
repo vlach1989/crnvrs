@@ -23,7 +23,7 @@ Store.dispatch(Action.specific.confirmedCases.loadCsvData());
 Store.dispatch(Action.components.update("ConfirmedChangeTable", {
     contentOptions: ["Daily", "Weekly"],
     activeContentOption: "Daily",
-    order: [["data.Daily.abs", "desc"]]
+    sorting: ["data.Daily.abs", "desc"]
 }));
 
 ReactDOM.render(
