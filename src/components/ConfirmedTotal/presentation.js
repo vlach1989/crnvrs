@@ -16,7 +16,7 @@ class ConfirmedChange extends React.PureComponent {
     render() {
         return (
             <Card
-                title="Cases"
+                title="Total confirmed cases"
             >
                 <table className="crnvrs-table">
                     <tr>
