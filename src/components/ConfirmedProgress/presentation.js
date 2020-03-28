@@ -21,7 +21,7 @@ const thresholdOptions = [{
     label: 1000
 }];
 
-class Confirmed extends React.PureComponent {
+class ConfirmedProgress extends React.PureComponent {
 
     constructor(props) {
         super(props);
@@ -75,4 +75,4 @@ class Confirmed extends React.PureComponent {
     }
 }
 
-export default Confirmed;
+export default ConfirmedProgress;

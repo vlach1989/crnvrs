@@ -10,7 +10,7 @@ import './styles/index.scss';
 
 import * as serviceWorker from "./serviceWorker";
 import Action from "./state/Action";
-import Confirmed from "./components/Confirmed";
+import Confirmed from "./components/ConfirmedProgress";
 import ConfirmedTotal from "./components/ConfirmedTotal";
 import ConfirmedChange from "./components/ConfirmedChange";
 
