@@ -56,6 +56,7 @@ class ConfirmedProgress extends React.PureComponent {
                 title="Confirmed cases progress"
                 subtitle="from the day with at least 100 cases"
                 col={2}
+                row={3}
             >
                 <Select
                     value={this.state.selectedAreas}

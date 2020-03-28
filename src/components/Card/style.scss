@@ -31,12 +31,20 @@
   min-width: 20rem;
   width: calc(50% - .5rem);
   max-width: 25rem;
-  height: 30rem;
+  height: 9.3333rem;
 }
 
 .crnvrs-card.two-col {
   min-width: 41rem;
   max-width: 51rem;
+}
+
+.crnvrs-card.two-row {
+  height: 14.5rem;
+}
+
+.crnvrs-card.three-row {
+  height: 30rem;
 }
 
 // Header
@@ -48,9 +56,13 @@
 
 .crnvrs-card-title {
   font-weight: bold;
+  font-size: .875rem;
   flex-grow: 1;
   color: var(--base85);
-  padding: .8rem m(2/3) .65rem;
+  padding: .95rem 0 0 m(2/3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .crnvrs-card-title span {

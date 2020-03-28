@@ -40,6 +40,7 @@ class ConfirmedTotal extends React.PureComponent {
         return (
             <Card
                 title="Change"
+                row={3}
                 switch={
                     <Switch
                         onChange={this.onContentChange}
