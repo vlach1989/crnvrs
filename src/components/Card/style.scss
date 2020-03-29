@@ -162,6 +162,14 @@
   padding: 0 .15rem;
 }
 
+.crnvrs-card-content .ptr-select__value-container .label {
+  color: var(--base70);
+}
+
+.crnvrs-card-content .ptr-select__value-container .ptr-select__multi-value__remove path {
+  fill: var(--base50);
+}
+
 @media only screen and (max-width: 84.99rem) {
   .crnvrs-card-group {
     width: 100%;
