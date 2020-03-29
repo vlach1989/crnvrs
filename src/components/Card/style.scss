@@ -136,9 +136,10 @@
 
 // Contnent
 .crnvrs-card-content {
-  padding: m(2/3);
+  padding: m(1/3) m(2/3) m(2/3);
   overflow: auto;
   max-height: calc(100% - 3rem);
+  height: 100%;
 }
 
 // charts

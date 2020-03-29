@@ -45,10 +45,10 @@ const loadCsvData = () => (dispatch) => {
 					});
 
 					const lastIndex = timeSerie.length - 1;
-					const current = timeSerie[lastIndex] && timeSerie[lastIndex].value;
-					const previousDay = timeSerie[lastIndex - 1] && timeSerie[lastIndex - 1].value;
-					const threeDaysBefore = timeSerie[lastIndex - 3] && timeSerie[lastIndex - 3].value;
-					const weekBefore = timeSerie[lastIndex - 7] && timeSerie[lastIndex - 7].value;
+					const current = timeSerie[lastIndex] && timeSerie[lastIndex].value || 0;
+					const previousDay = timeSerie[lastIndex - 1] && timeSerie[lastIndex - 1].value || 0;
+					const threeDaysBefore = timeSerie[lastIndex - 3] && timeSerie[lastIndex - 3].value || 0;
+					const weekBefore = timeSerie[lastIndex - 7] && timeSerie[lastIndex - 7].value || 0;
 
 					const dailyChangeAbsolute = current - previousDay;
 					const dailyChangeRelative = (current - previousDay) * 100/previousDay;

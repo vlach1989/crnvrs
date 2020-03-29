@@ -112,3 +112,28 @@
 .crnvrs-table .crnvrs-table-column-right {
 	text-align: right;
 }
+
+// Overview card
+.crnvrs-overview {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.crnvrs-overview-title {
+	font-size: $b3;
+	line-height: $a3;
+	color: var(--base85);
+}
+
+.crnvrs-overview-subtitle {
+	font-size: $b1;
+	color: var(--base85);
+}
+
+.crnvrs-overview-subtitle em {
+	font-weight: bold;
+}
