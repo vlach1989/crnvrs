@@ -20,16 +20,18 @@ class ConfirmedChange extends React.PureComponent {
                 row={3}
             >
                 <table className="crnvrs-table">
-                    <tr>
-                        <th>Country/province</th>
-                        <th className="crnvrs-table-column-right">Cases</th>
-                    </tr>
-                    {this.props.allAreas.map((area, i) =>
+                    <tbody>
                         <tr>
-                            <td>{i+1}. {area.data.name}</td>
-                            <td className="crnvrs-table-column-right">{area.data.current && area.data.current.toLocaleString()}</td>
+                            <th>Country/province</th>
+                            <th className="crnvrs-table-column-right">Cases</th>
                         </tr>
-                    )}
+                        {this.props.allAreas.map((area, i) =>
+                            <tr key={i}>
+                                <td>{i+1}. {area.data.name}</td>
+                                <td className="crnvrs-table-column-right">{area.data.current && area.data.current.toLocaleString()}</td>
+                            </tr>
+                        )}
+                    </tbody>
                 </table>
             </Card>
         );

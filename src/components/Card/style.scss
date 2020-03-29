@@ -198,7 +198,6 @@
 @media only screen and (max-width: 43rem) {
   .crnvrs-card-row {
     margin-bottom: 0;
-    padding: 0 .5rem;
   }
 
   .crnvrs-card-group .crnvrs-card-group.vertical:not(:last-child) {
@@ -227,5 +226,6 @@
 
   .crnvrs-card-header {
     height: auto;
+    min-height: 3rem;
   }
 }

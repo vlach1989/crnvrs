@@ -50,28 +50,30 @@ class ConfirmedTotal extends React.PureComponent {
                 }
             >
                 <table className="crnvrs-table">
-                    <tr>
-                        <th>Country/province</th>
-                        <th onClick={this.onOrderChange.bind(this, null, 'abs', null)} className={absClass}>Abs</th>
-                        <th onClick={this.onOrderChange.bind(this, null, 'rel', null)} className={relClass}>%</th>
-                    </tr>
-                    {this.props.allSortedByComponent.map((area, i) => {
-                        let absChangeValue = area.data[this.props.activeContentOption].abs;
-                        let relChangeValue = area.data[this.props.activeContentOption].rel;
+                    <tbody>
+                        <tr>
+                            <th>Country/province</th>
+                            <th onClick={this.onOrderChange.bind(this, null, 'abs', null)} className={absClass}>Abs</th>
+                            <th onClick={this.onOrderChange.bind(this, null, 'rel', null)} className={relClass}>%</th>
+                        </tr>
+                        {this.props.allSortedByComponent.map((area, i) => {
+                            let absChangeValue = area.data[this.props.activeContentOption].abs;
+                            let relChangeValue = area.data[this.props.activeContentOption].rel;
 
-                        const relClasses = classnames("crnvrs-table-column-right", {
-                            red: relChangeValue > 0
-                        });
+                            const relClasses = classnames("crnvrs-table-column-right", {
+                                red: relChangeValue > 0
+                            });
 
-                        return (
-                            <tr>
-                                <td>{i+1}. {area.data.name}</td>
-                                <td className="crnvrs-table-column-right">{absChangeValue && absChangeValue.toLocaleString()}</td>
-                                <td className={relClasses}>{relChangeValue && relChangeValue.toLocaleString(undefined, {minimumFractionDigits: 1, maximumFractionDigits: 1})}</td>
-                            </tr>
-                        );
-                    }
-                    )}
+                            return (
+                                <tr key={i}>
+                                    <td>{i+1}. {area.data.name}</td>
+                                    <td className="crnvrs-table-column-right">{absChangeValue && absChangeValue.toLocaleString()}</td>
+                                    <td className={relClasses}>{relChangeValue && relChangeValue.toLocaleString(undefined, {minimumFractionDigits: 1, maximumFractionDigits: 1})}</td>
+                                </tr>
+                            );
+                        }
+                        )}
+                    </tbody>
                 </table>
             </Card>
         );

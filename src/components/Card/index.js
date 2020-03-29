@@ -51,8 +51,9 @@ export class Switch extends React.PureComponent {
     render() {
         return (
             <div className="crnvrs-card-switch">
-                {this.props.options && this.props.options.map(option => (
+                {this.props.options && this.props.options.map((option, i) => (
                     <SwitchOption
+                        key={i}
                         active={this.props.active === option}
                         onClick={this.onOptionClick.bind(this, option)}
                     >
