@@ -27,6 +27,10 @@ Store.dispatch(Action.components.update("ConfirmedChangeTable", {
     sorting: ["data.Daily.abs", "desc"]
 }));
 
+Store.dispatch(Action.components.update("ConfirmedTotalTable", {
+    sorting: ["data.current", "desc"]
+}));
+
 ReactDOM.render(
     <>
         <Provider store={Store}>
@@ -57,7 +61,9 @@ ReactDOM.render(
                         </div>
 
                         <div className="crnvrs-card-group">
-                            <ConfirmedTotal/>
+                            <ConfirmedTotal
+                                componentKey="ConfirmedTotalTable"
+                            />
                             <ConfirmedChange
                                 componentKey="ConfirmedChangeTable"
                             />

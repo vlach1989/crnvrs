@@ -85,9 +85,7 @@ const loadCsvData = () => (dispatch) => {
 						}
 					};
 
-					if (current > 99) {
-						finalData.push(record);
-					}
+					finalData.push(record);
 				});
 
 				dispatch(add(finalData));

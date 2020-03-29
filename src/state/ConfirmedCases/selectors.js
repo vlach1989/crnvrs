@@ -6,9 +6,18 @@ const getSubstate = state => state.specific.confirmedCases;
 
 const getAll = commonSelectors.getAll(getSubstate);
 
+const getAllWithMoreThan100 = createSelector(
+    [getAll],
+    (all) => {
+        return _.filter(all, (item) => {
+            return item.data.current > 99;
+        });
+    }
+);
+
 const getAllSortedByComponent = createSelector(
     [
-        getAll,
+        getAllWithMoreThan100,
         (state,componentKey) => componentsSelectors.getDataByComponentKey(state, componentKey)
     ],
     (allCases, componentState) => {

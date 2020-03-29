@@ -5,7 +5,7 @@ import presentation from './presentation';
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        allAreas: Select.specific.confirmedCases.getAllSortedByCases(state)
+        allAreas: Select.specific.confirmedCases.getAllSortedByComponent(state, ownProps.componentKey)
     }
 };
 
