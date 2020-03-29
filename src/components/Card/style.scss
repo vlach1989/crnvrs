@@ -1,51 +1,83 @@
 @import '~@gisatcz/ptr-core/lib/styles/_variables';
 
+// card grid
+.crnvrs-card-grid {
+  padding: 1rem 0;
+}
+
 // card row
 .crnvrs-card-row {
   display: flex;
-  padding: m(1);
   justify-content: center;
-  margin: 0 auto;
+  margin: 0 auto 1rem;
+  padding: 0 1rem;
 }
 
-.crnvrs-card-row > div:last-child {
-  margin-right: 0;
-}
-
+// card group
 .crnvrs-card-group {
   display: flex;
-  min-width: 41rem;
-  width: calc(50% - .5rem);
-  max-width: 51rem;
+  max-width: 50rem;
+  width: calc(50% - 1rem);
 }
 
-.crnvrs-card-group > div:last-child {
+.crnvrs-card-group.vertical {
+  flex-direction: column;
+}
+
+.crnvrs-card-group .crnvrs-card-group.vertical {
+  width: 50%;
+}
+
+.crnvrs-card-group .crnvrs-card-group.vertical:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.crnvrs-card-row > .crnvrs-card-group:not(:last-child) {
+  margin-right: 1rem;
+}
+
+  // card
+.crnvrs-card {
+  background: var(--base0);
+  border-radius: .5rem;
+  min-width: 20rem;
+  max-width: 25rem;
+  height: 10rem;
+  margin-right: 1rem;
+}
+
+.crnvrs-card-group.vertical .crnvrs-card,
+.crnvrs-card-group .crnvrs-card:last-child,
+.crnvrs-card-group .crnvrs-card.width-2 {
   margin-right: 0;
 }
 
-// card
-.crnvrs-card {
-  background: var(--base0);
-  margin-right: m(1);
-  border-radius: .5rem;
-  min-width: 20rem;
-  width: calc(50% - .5rem);
-  max-width: 25rem;
-  height: 9.3333rem;
+.crnvrs-card-group.vertical .crnvrs-card:not(:last-child) {
+  margin-bottom: 1rem;
 }
 
-.crnvrs-card.two-col {
+.crnvrs-card.width-2 {
   min-width: 41rem;
-  max-width: 51rem;
+  max-width: 50rem;
 }
 
-.crnvrs-card.two-row {
-  height: 14.5rem;
+.crnvrs-card.height-2 {
+  height: 21rem;
 }
 
-.crnvrs-card.three-row {
-  height: 30rem;
+.crnvrs-card.height-3 {
+  height: 32rem;
 }
+
+.crnvrs-card-group .crnvrs-card {
+  width: calc(50% - .5rem);
+}
+
+.crnvrs-card-group.vertical .crnvrs-card,
+.crnvrs-card-group .crnvrs-card.width-2 {
+  width: 100%;
+}
+
 
 // Header
 .crnvrs-card-header {
@@ -131,39 +163,57 @@
 }
 
 @media only screen and (max-width: 84.99rem) {
+  .crnvrs-card-group {
+    width: 100%;
+  }
+
   .crnvrs-card-row {
     flex-direction: column;
     align-items: center;
   }
 
-  .crnvrs-card.two-col,
   .crnvrs-card-group {
-    margin: 0 0 m(1) 0;
-    width: calc(100% - 1rem);
+    margin-bottom: 1rem;
+  }
+
+  .crnvrs-card-row > .crnvrs-card-group:not(:last-child) {
+    margin-right: 0;
+  }
+
+  .crnvrs-card-row .crnvrs-card-group .crnvrs-card-group,
+  .crnvrs-card-row .crnvrs-card-group:last-child {
+    margin-bottom: 0;
   }
 }
 
 @media only screen and (max-width: 43rem) {
   .crnvrs-card-row {
-    padding: m(1/3) 0;
+    margin-bottom: 0;
+    padding: 0 .5rem;
   }
 
-  .crnvrs-card-group {
+  .crnvrs-card-group .crnvrs-card-group.vertical:not(:last-child) {
+    margin-right: 0;
+  }
+
+  .crnvrs-card-group,
+  .crnvrs-card-group .crnvrs-card-group.vertical {
     flex-direction: column;
-    min-width: auto;
+    width: 100%;
+    margin-bottom: 0;
     align-items: center;
   }
 
   .crnvrs-card {
-    min-width: auto;
-    width: calc(100% - .5rem);
-    max-width: 25rem;
-    margin: 0 0 m(1) 0;
+    margin-right: 0;
+    margin-bottom: 1rem;
   }
 
-  .crnvrs-card.two-col {
+  .crnvrs-card-group .crnvrs-card,
+  .crnvrs-card-group.vertical .crnvrs-card,
+  .crnvrs-card-group .crnvrs-card.width-2 {
     min-width: auto;
-    height: auto;
+    width: calc(100%);
   }
 
   .crnvrs-card-header {

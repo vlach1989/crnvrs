@@ -34,8 +34,8 @@ class ConfirmedCasesChart extends React.PureComponent {
                         yValuesSize={3.8}
                         yOptions={{
                             name: "Confirmed cases",
-                            min: 100,
-                            max: 100000,
+                            min: 1000,
+                            max: 1000000,
                             unit: "cases"
                         }}
 

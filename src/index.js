@@ -10,9 +10,10 @@ import './styles/index.scss';
 
 import * as serviceWorker from "./serviceWorker";
 import Action from "./state/Action";
-import Confirmed from "./components/ConfirmedProgress";
+import ConfirmedProgress from "./components/ConfirmedProgress";
 import ConfirmedTotal from "./components/ConfirmedTotal";
 import ConfirmedChange from "./components/ConfirmedChange";
+import CasesWorldwide from "./components/CasesWorldwide";
 
 const path = process.env.PUBLIC_URL;
 const history = createHistory({basename: path});
@@ -30,13 +31,37 @@ ReactDOM.render(
     <>
         <Provider store={Store}>
             <div className="ptr-light">
-                <div className="crnvrs-card-row">
-                    <Confirmed/>
-                    <div className="crnvrs-card-group">
-                        <ConfirmedTotal/>
-                        <ConfirmedChange
-                            componentKey="ConfirmedChangeTable"
-                        />
+                <div className="crnvrs-card-grid">
+                    <div className="crnvrs-card-row">
+                        <div className="crnvrs-card-group">
+                            <CasesWorldwide/>
+                            <div className="crnvrs-card">
+
+                            </div>
+                        </div>
+
+                        <div className="crnvrs-card-group">
+                            <div className="crnvrs-card">
+
+                            </div>
+                            <div className="crnvrs-card">
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div className="crnvrs-card-row">
+                        <div className="crnvrs-card-group vertical">
+                            <ConfirmedProgress/>
+                        </div>
+
+                        <div className="crnvrs-card-group">
+                            <ConfirmedTotal/>
+                            <ConfirmedChange
+                                componentKey="ConfirmedChangeTable"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

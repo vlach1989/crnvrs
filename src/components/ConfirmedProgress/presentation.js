@@ -27,8 +27,8 @@ class ConfirmedProgress extends React.PureComponent {
         super(props);
 
         this.state = {
-          selectedAreas: ["Czechia", "Italy", "Norway", "US_New York", "Spain", "Korea, South"],
-          threshold: thresholdOptions[2]
+          selectedAreas: ["Slovakia", "Spain", "Italy", "Czechia", "US", "Norway"],
+          threshold: thresholdOptions[4]
         };
 
         this.onAreaChange = this.onAreaChange.bind(this);

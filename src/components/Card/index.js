@@ -6,9 +6,9 @@ class Card extends React.PureComponent {
 
     render() {
         const classes = classnames("crnvrs-card", {
-            "two-col": this.props.col === 2,
-            "two-row": this.props.row === 2,
-            "three-row": this.props.row === 3,
+            "width-2": this.props.col === 2,
+            "height-2": this.props.row === 2,
+            "height-3": this.props.row === 3,
         });
 
         return (
