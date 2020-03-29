@@ -27,7 +27,7 @@ class ConfirmedProgress extends React.PureComponent {
         super(props);
 
         this.state = {
-          selectedAreas: ["Slovakia", "Spain", "Italy", "Czechia", "US", "Norway"],
+          selectedAreas: ["Spain", "Italy", "Czechia", "US", "Norway"],
           threshold: thresholdOptions[4]
         };
 
@@ -54,7 +54,7 @@ class ConfirmedProgress extends React.PureComponent {
         return (
             <Card
                 title="Confirmed cases progress"
-                subtitle="from the day with at least 100 cases"
+                subtitle="from the day with at least 1000 cases"
                 col={2}
                 row={3}
             >
