@@ -1,10 +1,12 @@
 import {createSelector} from 'reselect';
 import {commonSelectors, componentsSelectors} from '@gisatcz/ptr-state';
+import DeathsSelectors from "../Deaths/selectors";
 import _ from "lodash";
 
 const getSubstate = state => state.specific.confirmedCases;
 
 const getAll = commonSelectors.getAll(getSubstate);
+const getAllAsObject = commonSelectors.getAllAsObject(getSubstate);
 const getByKey = commonSelectors.getByKey(getSubstate);
 
 const getAllWithMoreThan100 = createSelector(
@@ -107,12 +109,34 @@ const getSum = createSelector(
     }
 );
 
+const getFilteredCasesWithDeaths = createSelector(
+    [
+        getAllAsObject,
+        DeathsSelectors.getAllAsObject,
+        (state, countries) => countries
+    ],
+    (cases, deaths, countries) => {
+        if (!_.isEmpty(cases) && !_.isEmpty(deaths)) {
+            return countries.map(countryKey => {
+               return {
+                   key: countryKey,
+                   cases: cases[countryKey],
+                   deaths: deaths[countryKey]
+               }
+            });
+        } else {
+            return null;
+        }
+    }
+);
+
 export default {
     getAll,
     getAllSortedByCases,
     getAllSortedByChange,
     getAllSortedByComponent,
     getFilteredDataByConfirmedCasesThreshold,
+    getFilteredCasesWithDeaths,
 
     getByKey,
     getSum

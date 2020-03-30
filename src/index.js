@@ -19,6 +19,7 @@ import DeathsCountry from "./components/DeathsCountry";
 import DeathsWorldwide from "./components/DeathsWorldwide";
 import DeathsTotal from "./components/DeathsTotal";
 import DeathsChange from "./components/DeathsChange";
+import CasesDeaths from "./components/CasesDeaths";
 
 const path = process.env.PUBLIC_URL;
 const history = createHistory({basename: path});
@@ -84,6 +85,9 @@ ReactDOM.render(
                     </div>
 
                     <div className="crnvrs-card-row">
+                        <div className="crnvrs-card-group vertical">
+                            <CasesDeaths/>
+                        </div>
                         <div className="crnvrs-card-group">
                             <DeathsTotal
                                 componentKey="DeathsTotalTable"

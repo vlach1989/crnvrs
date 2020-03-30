@@ -5,6 +5,7 @@ import _ from "lodash";
 const getSubstate = state => state.specific.deaths;
 
 const getAll = commonSelectors.getAll(getSubstate);
+const getAllAsObject = commonSelectors.getAllAsObject(getSubstate);
 const getByKey = commonSelectors.getByKey(getSubstate);
 
 const getAllMoreThan5 = createSelector(
@@ -47,6 +48,7 @@ const getSum = createSelector(
 
 export default {
     getAll,
+    getAllAsObject,
     getAllSortedByComponent,
     getByKey,
     getSum
