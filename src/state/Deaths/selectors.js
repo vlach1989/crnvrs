@@ -1,10 +1,22 @@
-import {commonSelectors} from "@gisatcz/ptr-state";
+import {commonSelectors, componentsSelectors} from "@gisatcz/ptr-state";
 import {createSelector} from 'reselect';
 import _ from "lodash";
 
 const getSubstate = state => state.specific.deaths;
 
 const getAll = commonSelectors.getAll(getSubstate);
+const getByKey = commonSelectors.getByKey(getSubstate);
+
+const getAllSortedByComponent = createSelector(
+    [
+        getAll,
+        (state,componentKey) => componentsSelectors.getDataByComponentKey(state, componentKey)
+    ],
+    (allCases, componentState) => {
+        const sorting = componentState.sorting;
+        return _.orderBy(allCases, [sorting[0]], [sorting[1]]);
+    }
+);
 
 const getSum = createSelector(
     [getAll],
@@ -20,11 +32,13 @@ const getSum = createSelector(
             }
         });
 
-        return data && data.length ? {current, previousDay, threeDaysBefore, weekBefore} : null;
+        return data && data.length ? {data: {current, previousDay, threeDaysBefore, weekBefore}} : null;
     }
 );
 
 export default {
     getAll,
+    getAllSortedByComponent,
+    getByKey,
     getSum
 }

@@ -5,7 +5,7 @@ import presentation from '../TotalTableCard';
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        allAreas: Select.specific.confirmedCases.getAllSortedByComponent(state, ownProps.componentKey)
+        allAreas: Select.specific.deaths.getAllSortedByComponent(state, ownProps.componentKey)
     }
 };
 

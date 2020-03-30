@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
-import Card, {Switch} from "../Card";
+import Card, {Switch} from "./Card";
 
 class ConfirmedChange extends React.PureComponent {
 
@@ -16,14 +16,14 @@ class ConfirmedChange extends React.PureComponent {
     render() {
         return (
             <Card
-                title="Total confirmed cases"
+                title={this.props.title}
                 row={3}
             >
                 <table className="crnvrs-table">
                     <tbody>
                         <tr>
                             <th>Country/province</th>
-                            <th className="crnvrs-table-column-right">Cases</th>
+                            <th className="crnvrs-table-column-right">Total</th>
                         </tr>
                         {this.props.allAreas.map((area, i) =>
                             <tr key={i}>

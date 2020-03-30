@@ -1,11 +1,11 @@
 import {connect} from '@gisatcz/ptr-state';
 import Select from '../../state/Select';
 import Action from "../../state/Action";
-import presentation from '../TotalTableCard';
+import presentation from '../StatusCard';
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        allAreas: Select.specific.confirmedCases.getAllSortedByComponent(state, ownProps.componentKey)
+        data: Select.specific.deaths.getByKey(state, ownProps.areaKey)
     }
 };
 

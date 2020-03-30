@@ -137,3 +137,11 @@
 .crnvrs-overview-subtitle em {
 	font-weight: bold;
 }
+
+// Copy
+.crnvrs-data-source {
+	padding: 0 m(4/3);
+	width: 100%;
+	font-size: $b1;
+	color: var(--base50);
+}

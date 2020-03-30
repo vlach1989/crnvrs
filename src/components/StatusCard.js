@@ -19,26 +19,31 @@ class StatusCard extends React.PureComponent {
     }
 
     renderContent() {
-        const data = this.props.data;
-        const dailyChangeAbs = data.current - data.previousDay;
-        const dailyChangeRel = dailyChangeAbs*100/data.current;
+        const data = this.props.data && this.props.data.data;
 
-        const weeklyChangeAbs = data.current - data.weekBefore;
-        const weeklyChangeRel = weeklyChangeAbs*100/data.current;
+        if (data) {
+            const dailyChangeAbs = data.current - data.previousDay;
+            const dailyChangeRel = dailyChangeAbs*100/data.current;
 
-        return (
-            <div className="crnvrs-overview">
-                <div className="crnvrs-overview-title">
-                    {data.current.toLocaleString()}
+            const weeklyChangeAbs = data.current - data.weekBefore;
+            const weeklyChangeRel = weeklyChangeAbs*100/data.current;
+
+            return (
+                <div className="crnvrs-overview">
+                    <div className="crnvrs-overview-title">
+                        {data.current.toLocaleString()}
+                    </div>
+                    <div className="crnvrs-overview-subtitle">
+                        <em>{`+${dailyChangeRel.toLocaleString(undefined, {minimumFractionDigits: 1, maximumFractionDigits: 1})}`} %</em> daily change
+                    </div>
+                    <div className="crnvrs-overview-subtitle">
+                        <em>{`+${weeklyChangeRel.toLocaleString(undefined, {minimumFractionDigits: 1, maximumFractionDigits: 1})}`} %</em> weekly change
+                    </div>
                 </div>
-                <div className="crnvrs-overview-subtitle">
-                    <em>{`+${dailyChangeRel.toLocaleString(undefined, {minimumFractionDigits: 1, maximumFractionDigits: 1})}`} %</em> daily change
-                </div>
-                <div className="crnvrs-overview-subtitle">
-                    <em>{`+${weeklyChangeRel.toLocaleString(undefined, {minimumFractionDigits: 1, maximumFractionDigits: 1})}`} %</em> weekly change
-                </div>
-            </div>
-        );
+            );
+        } else {
+            return null;
+        }
     }
 }
 

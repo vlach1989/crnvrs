@@ -5,6 +5,7 @@ import _ from "lodash";
 const getSubstate = state => state.specific.confirmedCases;
 
 const getAll = commonSelectors.getAll(getSubstate);
+const getByKey = commonSelectors.getByKey(getSubstate);
 
 const getAllWithMoreThan100 = createSelector(
     [getAll],
@@ -102,7 +103,7 @@ const getSum = createSelector(
            }
         });
 
-        return data && data.length ? {current, previousDay, threeDaysBefore, weekBefore} : null;
+        return data && data.length ? {data: {current, previousDay, threeDaysBefore, weekBefore}} : null;
     }
 );
 
@@ -113,5 +114,6 @@ export default {
     getAllSortedByComponent,
     getFilteredDataByConfirmedCasesThreshold,
 
+    getByKey,
     getSum
 };

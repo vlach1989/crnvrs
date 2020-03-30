@@ -13,8 +13,11 @@ import Action from "./state/Action";
 import ConfirmedProgress from "./components/ConfirmedProgress";
 import ConfirmedTotal from "./components/ConfirmedTotal";
 import ConfirmedChange from "./components/ConfirmedChange";
+import CasesCountry from "./components/CasesCountry";
 import CasesWorldwide from "./components/CasesWorldwide";
+import DeathsCountry from "./components/DeathsCountry";
 import DeathsWorldwide from "./components/DeathsWorldwide";
+import DeathsTotal from "./components/DeathsTotal";
 
 const path = process.env.PUBLIC_URL;
 const history = createHistory({basename: path});
@@ -33,6 +36,10 @@ Store.dispatch(Action.components.update("ConfirmedTotalTable", {
     sorting: ["data.current", "desc"]
 }));
 
+Store.dispatch(Action.components.update("DeathsTotalTable", {
+    sorting: ["data.current", "desc"]
+}));
+
 ReactDOM.render(
     <>
         <Provider store={Store}>
@@ -40,18 +47,13 @@ ReactDOM.render(
                 <div className="crnvrs-card-grid">
                     <div className="crnvrs-card-row">
                         <div className="crnvrs-card-group">
-                            <CasesWorldwide title="Cases worldwide"/>
+                            <CasesWorldwide title="Confirmed cases worldwide"/>
                             <DeathsWorldwide title="Deaths worldwide"/>
-
                         </div>
 
                         <div className="crnvrs-card-group">
-                            <div className="crnvrs-card">
-
-                            </div>
-                            <div className="crnvrs-card">
-
-                            </div>
+                            <CasesCountry title="Confirmed cases Czech Republic" areaKey="Czechia"/>
+                            <DeathsCountry title="Deaths Czech Republic" areaKey="Czechia"/>
                         </div>
                     </div>
 
@@ -64,13 +66,24 @@ ReactDOM.render(
                         <div className="crnvrs-card-group">
                             <ConfirmedTotal
                                 componentKey="ConfirmedTotalTable"
+                                title="Confirmed cases total"
                             />
                             <ConfirmedChange
                                 componentKey="ConfirmedChangeTable"
                             />
                         </div>
                     </div>
+
+                    <div className="crnvrs-card-row">
+                        <div className="crnvrs-card-group">
+                            <DeathsTotal
+                                componentKey="DeathsTotalTable"
+                                title="Deaths total"
+                            />
+                        </div>
+                    </div>
                 </div>
+                <div className="crnvrs-data-source">Data source: <a href="https://github.com/CSSEGISandData/COVID-19" target="_blank">Johns Hopkins University</a></div>
             </div>
         </Provider>
     </>, document.getElementById('ptr')
