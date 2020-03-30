@@ -14,12 +14,14 @@ import ConfirmedProgress from "./components/ConfirmedProgress";
 import ConfirmedTotal from "./components/ConfirmedTotal";
 import ConfirmedChange from "./components/ConfirmedChange";
 import CasesWorldwide from "./components/CasesWorldwide";
+import DeathsWorldwide from "./components/DeathsWorldwide";
 
 const path = process.env.PUBLIC_URL;
 const history = createHistory({basename: path});
 const Store = createStore(history);
 
-Store.dispatch(Action.specific.confirmedCases.loadCsvData());
+Store.dispatch(Action.specific.confirmedCases.load());
+Store.dispatch(Action.specific.deaths.load());
 
 Store.dispatch(Action.components.update("ConfirmedChangeTable", {
     contentOptions: ["Daily", "Weekly"],
@@ -38,10 +40,9 @@ ReactDOM.render(
                 <div className="crnvrs-card-grid">
                     <div className="crnvrs-card-row">
                         <div className="crnvrs-card-group">
-                            <CasesWorldwide/>
-                            <div className="crnvrs-card">
+                            <CasesWorldwide title="Cases worldwide"/>
+                            <DeathsWorldwide title="Deaths worldwide"/>
 
-                            </div>
                         </div>
 
                         <div className="crnvrs-card-group">

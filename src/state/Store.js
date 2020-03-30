@@ -17,6 +17,7 @@ import {appReducers} from '@gisatcz/ptr-state';
 
 // specific
 import confirmedCases from './ConfirmedCases/reducers'
+import deaths from './Deaths/reducers'
 
 export const createHistory = (options) => {
 	let history = createBrowserHistory(options);
@@ -37,7 +38,8 @@ export default history => {
 	}
 	return createStore(combineReducers({
 		specific: combineReducers({
-			confirmedCases
+			confirmedCases,
+			deaths
 		}),
 		app: appReducers,
 		components: componentsReducers,

@@ -7,10 +7,10 @@ import config from "../../config";
 
 // ============ creators ===========
 
-const add = common.add(ActionTypes.CONFIRMED_CASES);
+const add = common.add(ActionTypes.DEATHS);
 
 const load = () => (dispatch) => {
-	dispatch(helpers.loadCsvData(config.confirmedCasesData, add));
+    dispatch(helpers.loadCsvData(config.deathsData, add));
 };
 
 // ============ helpers ===========
@@ -20,5 +20,5 @@ const load = () => (dispatch) => {
 // ============ export ===========
 
 export default {
-	load
+    load
 }

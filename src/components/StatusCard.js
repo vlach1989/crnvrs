@@ -1,8 +1,8 @@
 import React from 'react';
 import _ from 'lodash';
-import Card, {Switch} from "../Card";
+import Card, {Switch} from "./Card";
 
-class CasesWorldwide extends React.PureComponent {
+class StatusCard extends React.PureComponent {
 
     constructor(props) {
         super(props);
@@ -11,15 +11,15 @@ class CasesWorldwide extends React.PureComponent {
     render() {
         return (
             <Card
-                title="Cases worldwide"
+                title={this.props.title}
             >
-                {this.props.cases ? this.renderContent() : null}
+                {this.props.data ? this.renderContent() : null}
             </Card>
         );
     }
 
     renderContent() {
-        const data = this.props.cases;
+        const data = this.props.data;
         const dailyChangeAbs = data.current - data.previousDay;
         const dailyChangeRel = dailyChangeAbs*100/data.current;
 
@@ -42,4 +42,4 @@ class CasesWorldwide extends React.PureComponent {
     }
 }
 
-export default CasesWorldwide;
+export default StatusCard;
