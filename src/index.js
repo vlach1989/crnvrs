@@ -18,6 +18,7 @@ import CasesWorldwide from "./components/CasesWorldwide";
 import DeathsCountry from "./components/DeathsCountry";
 import DeathsWorldwide from "./components/DeathsWorldwide";
 import DeathsTotal from "./components/DeathsTotal";
+import DeathsChange from "./components/DeathsChange";
 
 const path = process.env.PUBLIC_URL;
 const history = createHistory({basename: path});
@@ -31,6 +32,13 @@ Store.dispatch(Action.components.update("ConfirmedChangeTable", {
     activeContentOption: "Daily",
     sorting: ["data.Daily.abs", "desc"]
 }));
+
+Store.dispatch(Action.components.update("DeathsChangeTable", {
+    contentOptions: ["Daily", "Weekly"],
+    activeContentOption: "Daily",
+    sorting: ["data.Daily.abs", "desc"]
+}));
+
 
 Store.dispatch(Action.components.update("ConfirmedTotalTable", {
     sorting: ["data.current", "desc"]
@@ -70,6 +78,7 @@ ReactDOM.render(
                             />
                             <ConfirmedChange
                                 componentKey="ConfirmedChangeTable"
+                                title="Cases change"
                             />
                         </div>
                     </div>
@@ -79,6 +88,10 @@ ReactDOM.render(
                             <DeathsTotal
                                 componentKey="DeathsTotalTable"
                                 title="Deaths total"
+                            />
+                            <DeathsChange
+                                componentKey="DeathsChangeTable"
+                                title="Deaths change"
                             />
                         </div>
                     </div>

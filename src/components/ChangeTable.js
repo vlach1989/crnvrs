@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import _ from 'lodash';
-import Card, {Switch} from "../Card";
+import Card, {Switch} from "./Card";
 
 class ConfirmedTotal extends React.PureComponent {
 
@@ -39,7 +39,7 @@ class ConfirmedTotal extends React.PureComponent {
 
         return (
             <Card
-                title="Change"
+                title={this.props.title}
                 row={3}
                 switch={
                     <Switch

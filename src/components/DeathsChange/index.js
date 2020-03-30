@@ -5,7 +5,7 @@ import presentation from '../ChangeTable';
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        allSortedByComponent: Select.specific.confirmedCases.getAllSortedByComponent(state, ownProps.componentKey),
+        allSortedByComponent: Select.specific.deaths.getAllSortedByComponent(state, ownProps.componentKey),
         contentOptions: Select.components.get(state, ownProps.componentKey, "contentOptions"),
         activeContentOption: Select.components.get(state, ownProps.componentKey, "activeContentOption"),
         sorting: Select.components.get(state, ownProps.componentKey, "sorting")

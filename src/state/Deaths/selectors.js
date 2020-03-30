@@ -7,9 +7,18 @@ const getSubstate = state => state.specific.deaths;
 const getAll = commonSelectors.getAll(getSubstate);
 const getByKey = commonSelectors.getByKey(getSubstate);
 
+const getAllMoreThan5 = createSelector(
+    [getAll],
+    (all) => {
+        return _.filter(all, (item) => {
+            return item.data.current > 4;
+        });
+    }
+);
+
 const getAllSortedByComponent = createSelector(
     [
-        getAll,
+        getAllMoreThan5,
         (state,componentKey) => componentsSelectors.getDataByComponentKey(state, componentKey)
     ],
     (allCases, componentState) => {
