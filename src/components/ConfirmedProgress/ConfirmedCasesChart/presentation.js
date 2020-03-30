@@ -23,7 +23,6 @@ class ConfirmedCasesChart extends React.PureComponent {
                         ySourcePath="value"
 
                         isSerie
-                        pointRadius={3}
 
                         xValuesSize={1.8}
                         xOptions={{
@@ -46,7 +45,6 @@ class ConfirmedCasesChart extends React.PureComponent {
                         legend
                         withPoints={true}
                         pointOptions={{
-                            radius: 4,
                             showOnHover: true
                         }}
                     />
