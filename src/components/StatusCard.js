@@ -23,10 +23,10 @@ class StatusCard extends React.PureComponent {
 
         if (data) {
             const dailyChangeAbs = data.current - data.previousDay;
-            const dailyChangeRel = dailyChangeAbs*100/data.current;
+            const dailyChangeRel = dailyChangeAbs*100/data.previousDay;
 
             const weeklyChangeAbs = data.current - data.weekBefore;
-            const weeklyChangeRel = weeklyChangeAbs*100/data.current;
+            const weeklyChangeRel = weeklyChangeAbs*100/data.weekBefore;
 
             return (
                 <div className="crnvrs-overview">
