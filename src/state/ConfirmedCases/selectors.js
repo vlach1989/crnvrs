@@ -130,6 +130,54 @@ const getFilteredCasesWithDeaths = createSelector(
     }
 );
 
+
+/********************************************/
+const getDailyByKey = createSelector(
+	[getByKey],
+	(country) => {
+		const d = country?.data;
+		let yesterday = 0, previousDay = 0, tenDaysBefore = 0;
+		if (d?.dailyCases?.[0]) {
+			yesterday = d.dailyCases[0];
+		}
+
+		if (d?.dailyCases?.[1]) {
+			previousDay = d.dailyCases[1];
+		}
+
+		if (d?.dailyCases?.[10]) {
+			tenDaysBefore = d.dailyCases[10];
+		}
+
+		return d ? {data: {yesterday, previousDay, tenDaysBefore}} : null;
+	}
+);
+
+const getDailyCasesSum = createSelector(
+	[getAll],
+	(data) => {
+		let yesterday = 0, previousDay = 0, tenDaysBefore = 0;
+		_.forEach(data, item => {
+			if (item.data) {
+				const d = item.data;
+				if (d?.dailyCases?.[0]) {
+					yesterday += d.dailyCases[0];
+				}
+
+				if (d?.dailyCases?.[1]) {
+					previousDay += d.dailyCases[1];
+				}
+
+				if (d?.dailyCases?.[10]) {
+					tenDaysBefore += d.dailyCases[10];
+				}
+			}
+		});
+
+		return data && data.length ? {data: {yesterday, previousDay, tenDaysBefore}} : null;
+	}
+);
+
 export default {
     getAll,
     getAllSortedByCases,
@@ -139,5 +187,9 @@ export default {
     getFilteredCasesWithDeaths,
 
     getByKey,
-    getSum
+    getSum,
+
+
+	getDailyByKey,
+	getDailyCasesSum
 };

@@ -5,7 +5,7 @@ import presentation from '../StatusCard';
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        data: Select.specific.confirmedCases.getSum(state)
+        data: Select.specific.confirmedCases.getDailyCasesSum(state)
     }
 };
 

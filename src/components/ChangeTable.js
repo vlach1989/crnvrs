@@ -41,6 +41,7 @@ class ConfirmedTotal extends React.PureComponent {
             <Card
                 title={this.props.title}
                 row={3}
+				col={2}
                 switch={
                     <Switch
                         onChange={this.onContentChange}

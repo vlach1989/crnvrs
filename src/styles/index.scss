@@ -136,6 +136,12 @@
 
 .crnvrs-overview-subtitle em {
 	font-weight: bold;
+  	color: green;
+}
+
+.crnvrs-overview-subtitle em.positive {
+  font-weight: bold;
+  color: red;
 }
 
 // Copy

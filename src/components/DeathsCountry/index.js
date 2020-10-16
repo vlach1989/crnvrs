@@ -5,7 +5,7 @@ import presentation from '../StatusCard';
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        data: Select.specific.deaths.getByKey(state, ownProps.areaKey)
+        data: Select.specific.deaths.getDailyByKey(state, ownProps.areaKey)
     }
 };
 

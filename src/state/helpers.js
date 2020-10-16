@@ -36,20 +36,15 @@ const loadCsvData = (url, successAction) => (dispatch) => {
                         }
                     });
 
-                    const lastIndex = timeSerie.length - 1;
-                    const current = timeSerie[lastIndex] && timeSerie[lastIndex].value || 0;
-                    const previousDay = timeSerie[lastIndex - 1] && timeSerie[lastIndex - 1].value || 0;
-                    const threeDaysBefore = timeSerie[lastIndex - 3] && timeSerie[lastIndex - 3].value || 0;
-                    const weekBefore = timeSerie[lastIndex - 7] && timeSerie[lastIndex - 7].value || 0;
-
-                    const dailyChangeAbsolute = current - previousDay;
-                    const dailyChangeRelative = (current - previousDay) * 100/previousDay;
-
-                    const threeDaysChangeAbsolute = current - threeDaysBefore;
-                    const threeDaysChangeRelative = (current - threeDaysBefore) * 100/threeDaysBefore;
-
-                    const weeklyChangeAbsolute = current - weekBefore;
-                    const weeklyChangeRelative = (current - weekBefore) * 100/weekBefore;
+                    const reversedTimeSerie = timeSerie.reverse();
+					let dailyCasesRetrospectively = [];
+					for (let i = 0; i < reversedTimeSerie.length; i++) {
+						if (reversedTimeSerie[i+1]) {
+							dailyCasesRetrospectively.push(reversedTimeSerie[i].value - reversedTimeSerie[i + 1].value);
+						} else {
+							dailyCasesRetrospectively.push(0);
+						}
+					}
 
                     const record = {
                         key,
@@ -57,23 +52,8 @@ const loadCsvData = (url, successAction) => (dispatch) => {
                             name: province ? `${province} (${country})` : country,
                             country,
                             province,
-                            current,
-                            previousDay,
-                            threeDaysBefore,
-                            weekBefore,
-                            Daily: {
-                                abs: dailyChangeAbsolute,
-                                rel: dailyChangeRelative
-                            },
-                            ThreeDays: {
-                                abs: threeDaysChangeAbsolute,
-                                rel: threeDaysChangeRelative
-                            },
-                            Weekly: {
-                                abs: weeklyChangeAbsolute,
-                                rel: weeklyChangeRelative
-                            },
-                            cases: timeSerie
+                            casesTimeSerie: timeSerie,
+							dailyCases: dailyCasesRetrospectively
                         }
                     };
 

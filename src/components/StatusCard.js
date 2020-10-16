@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import _ from 'lodash';
 import Card, {Switch} from "./Card";
 
@@ -22,22 +23,30 @@ class StatusCard extends React.PureComponent {
         const data = this.props.data && this.props.data.data;
 
         if (data) {
-            const dailyChangeAbs = data.current - data.previousDay;
+            const dailyChangeAbs = data.yesterday - data.previousDay;
             const dailyChangeRel = dailyChangeAbs*100/data.previousDay;
 
-            const weeklyChangeAbs = data.current - data.weekBefore;
-            const weeklyChangeRel = weeklyChangeAbs*100/data.weekBefore;
+            const tenDaysChangeAbs = data.yesterday - data.tenDaysBefore;
+			const tenDaysChangeRel = tenDaysChangeAbs*100/data.tenDaysBefore;
+
+			const dailyClasses = classnames("", {
+				"positive": dailyChangeAbs > 0
+			});
+
+			const tenDaysClasses = classnames("", {
+				"positive": tenDaysChangeAbs > 0
+			});
 
             return (
                 <div className="crnvrs-overview">
                     <div className="crnvrs-overview-title">
-                        {data.current.toLocaleString()}
+                        {data.yesterday.toLocaleString()}
+				</div>
+                    <div className="crnvrs-overview-subtitle">
+                        <em className={dailyClasses}>{`${dailyChangeRel >= 0 ? "+" : ""}${dailyChangeRel.toLocaleString(undefined, {minimumFractionDigits: 1, maximumFractionDigits: 1})}`} %</em> vs. previous day
                     </div>
                     <div className="crnvrs-overview-subtitle">
-                        <em>{`+${dailyChangeRel.toLocaleString(undefined, {minimumFractionDigits: 1, maximumFractionDigits: 1})}`} %</em> daily change
-                    </div>
-                    <div className="crnvrs-overview-subtitle">
-                        <em>{`+${weeklyChangeRel.toLocaleString(undefined, {minimumFractionDigits: 1, maximumFractionDigits: 1})}`} %</em> weekly change
+                        <em className={tenDaysClasses}>{`${tenDaysChangeRel >= 0 ? "+" : ""}${tenDaysChangeRel.toLocaleString(undefined, {minimumFractionDigits: 1, maximumFractionDigits: 1})}`} %</em> vs. 10 days ago
                     </div>
                 </div>
             );

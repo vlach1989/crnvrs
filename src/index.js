@@ -56,49 +56,58 @@ ReactDOM.render(
                 <div className="crnvrs-card-grid">
                     <div className="crnvrs-card-row">
                         <div className="crnvrs-card-group">
-                            <CasesWorldwide title="Confirmed cases worldwide"/>
-                            <DeathsWorldwide title="Deaths worldwide"/>
+                            <CasesWorldwide title="Daily cases worldwide"/>
+                            <DeathsWorldwide title="Daily deaths worldwide"/>
                         </div>
 
                         <div className="crnvrs-card-group">
-                            <CasesCountry title="Confirmed cases Czech Republic" areaKey="Czechia"/>
-                            <DeathsCountry title="Deaths Czech Republic" areaKey="Czechia"/>
+                            <CasesCountry title="Daily cases Czech Republic" areaKey="Czechia"/>
+                            <DeathsCountry title="Daily deaths Czech Republic" areaKey="Czechia"/>
                         </div>
                     </div>
 
+					<div className="crnvrs-card-row">
+					    <div className="crnvrs-card-group">
+					        <ConfirmedChange
+					            componentKey="ConfirmedChangeTable"
+					            title="Daily cases by country"
+					        />
+					    </div>
+					</div>
 
-                    <div className="crnvrs-card-row">
-                        <div className="crnvrs-card-group vertical">
-                            <ConfirmedProgress/>
-                        </div>
 
-                        <div className="crnvrs-card-group">
-                            <ConfirmedTotal
-                                componentKey="ConfirmedTotalTable"
-                                title="Confirmed cases total"
-                            />
-                            <ConfirmedChange
-                                componentKey="ConfirmedChangeTable"
-                                title="Cases change"
-                            />
-                        </div>
-                    </div>
+                    {/*<div className="crnvrs-card-row">*/}
+                    {/*    <div className="crnvrs-card-group vertical">*/}
+                    {/*        <ConfirmedProgress/>*/}
+                    {/*    </div>*/}
 
-                    <div className="crnvrs-card-row">
-                        <div className="crnvrs-card-group vertical">
-                            <CasesDeaths/>
-                        </div>
-                        <div className="crnvrs-card-group">
-                            <DeathsTotal
-                                componentKey="DeathsTotalTable"
-                                title="Deaths total"
-                            />
-                            <DeathsChange
-                                componentKey="DeathsChangeTable"
-                                title="Deaths change"
-                            />
-                        </div>
-                    </div>
+                    {/*    <div className="crnvrs-card-group">*/}
+                    {/*        <ConfirmedTotal*/}
+                    {/*            componentKey="ConfirmedTotalTable"*/}
+                    {/*            title="Confirmed cases total"*/}
+                    {/*        />*/}
+                    {/*        <ConfirmedChange*/}
+                    {/*            componentKey="ConfirmedChangeTable"*/}
+                    {/*            title="Cases change"*/}
+                    {/*        />*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
+
+                    {/*<div className="crnvrs-card-row">*/}
+                    {/*    <div className="crnvrs-card-group vertical">*/}
+                    {/*        <CasesDeaths/>*/}
+                    {/*    </div>*/}
+                    {/*    <div className="crnvrs-card-group">*/}
+                    {/*        <DeathsTotal*/}
+                    {/*            componentKey="DeathsTotalTable"*/}
+                    {/*            title="Deaths total"*/}
+                    {/*        />*/}
+                    {/*        <DeathsChange*/}
+                    {/*            componentKey="DeathsChangeTable"*/}
+                    {/*            title="Deaths change"*/}
+                    {/*        />*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
                 </div>
                 <div className="crnvrs-data-source">Data source: <a href="https://github.com/CSSEGISandData/COVID-19" target="_blank">Johns Hopkins University</a></div>
             </div>
